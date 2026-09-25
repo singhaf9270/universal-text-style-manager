@@ -1,0 +1,10 @@
+{
+  "id": "universal-text-style-manager",
+  "name": "Universal Text Style Manager",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "Visually style text, headings, blocks, lists, tables, links and embeds without writing CSS. Works in Live Preview and Reading View.",
+  "author": "Saeed Ghobadi",
+  "authorUrl": "https://github.com/saeedghobadi",
+  "isDesktopOnly": false
+}
