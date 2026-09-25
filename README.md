@@ -2,51 +2,52 @@
 
 # 🎨 Universal Text Style Manager
 
-**Visually style text, headings, blocks, lists, tables, links, and embeds in Obsidian — without writing CSS.**
+**Style your Obsidian notes visually — without writing CSS.**
 
-Works seamlessly in both **Live Preview** and **Reading View**.
-Your Markdown files are never modified.
+Customize text, headings, blocks, lists, tables, links, embeds, and more
+with a simple visual interface.
+
+**Works in Live Preview and Reading View.**
+**Your Markdown files are never modified.**
+
+<br>
 
 [![Obsidian Plugin](https://img.shields.io/badge/Obsidian-Plugin-7c3aed?style=for-the-badge\&logo=obsidian\&logoColor=white)](https://obsidian.md)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge)](https://github.com/saeedghobadi/universal-text-style-manager/releases)
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/saeedghobadi/universal-text-style-manager/total?style=for-the-badge\&color=orange)](https://github.com/saeedghobadi/universal-text-style-manager/releases)
 
-[📥 Installation](#-نصب--installation) • [✨ Features](#-ویژگیها--features) • [🎮 Usage](#-استفاده--usage) • [📺 Channels](#-کانالهای-ما--our-channels)
+<br>
+
+[📥 Installation](#-installation) ·
+[✨ Features](#-features) ·
+[🎨 Presets](#-built-in-presets) ·
+[🎮 Usage](#-usage) ·
+[🐛 Issues](#-bug-reports)
 
 </div>
 
 ---
 
-## 📖 درباره پلاگین
+## ✨ Features
 
-**Universal Text Style Manager** یک پلاگین برای Obsidian است که به شما اجازه می‌دهد بدون نوشتن حتی یک خط CSS، ظاهر بخش‌های مختلف یادداشت‌های خود را به‌صورت بصری تنظیم کنید.
+### 🎨 Visual Styling
 
-می‌توانید ظاهر **متن، سرتیترها، بلوک‌ها، لیست‌ها، جدول‌ها، لینک‌ها، امبدها و بسیاری از عناصر Markdown** را از طریق یک رابط کاربری گرافیکی کنترل کنید.
+Style your notes without writing CSS.
 
-> 💡 **فایل‌های Markdown شما هرگز تغییر نمی‌کنند.**
-> تمام استایل‌ها به‌صورت جداگانه در تنظیمات پلاگین ذخیره می‌شوند.
+* Simple visual interface
+* Live preview
+* Separate Light and Dark mode styles
+* No changes to your Markdown files
+* Custom CSS classes and scopes
+* Works with existing Obsidian themes
 
----
+### 📝 Text & Headings
 
-## ✨ ویژگی‌ها | Features
+Customize individual Markdown text elements.
 
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### 🎨 استایل‌دهی بصری
-
-* بدون نیاز به نوشتن CSS
-* رابط کاربری گرافیکی و ساده
-* پیش‌نمایش زنده
-* پشتیبانی از **Light Mode** و **Dark Mode**
-* امکان تنظیم استایل برای بخش‌های مختلف Markdown
-
-### 📝 متن و سرتیترها
-
-* تنظیم مستقل برای H1 تا H6
-* پاراگراف
+* Paragraphs
+* Headings H1–H6
 * **Bold**
 * *Italic*
 * ***Bold & Italic***
@@ -54,162 +55,158 @@ Your Markdown files are never modified.
 * ==Highlight==
 * `Inline Code`
 * Inline Math
-* Comment
+* Comments
 * Superscript / Subscript
 
-### 💬 بلوک‌ها
+### 💬 Blocks
 
-* Blockquote
-* Callout
-* Callout Title
-* Code Block
-* Math Block
-* Horizontal Divider
+* Blockquotes
+* Callouts
+* Callout titles
+* Code blocks
+* Math blocks
+* Horizontal dividers
 
-</td>
-<td width="50%" valign="top">
+### 📋 Lists
 
-### 📃 لیست‌ها
+* Bullet lists
+* Numbered lists
+* Nested lists
+* Task lists
+* Completed / uncompleted tasks
+* List markers and numbers
 
-* Bullet List
-* Numbered List
-* Nested Lists
-* Task List
-* Completed / Uncompleted Tasks
-* List Markers & Numbers
+### 📊 Tables
 
-### 📊 جدول‌ها
+Customize different parts of your tables independently.
 
-* Table
-* Table Header
-* Table Body
+* Tables
+* Headers
+* Body
 * Rows
 * Cells
-* Hover Row
-* Alternating Rows
+* Hover rows
+* Alternating rows
 
-### 🔗 لینک‌ها و امبدها
+### 🔗 Links & Embeds
 
-* Internal Links
-* External Links
+* Internal links
+* External links
 * Tags
 * Footnotes
-* Note Embeds
-* Image Embeds
-* PDF Embeds
-* Audio / Video Embeds
+* Note embeds
+* Image embeds
+* PDF embeds
+* Audio / video embeds
 
-### 🌐 امکانات پیشرفته
+### ⚙️ Advanced
 
-* ۱۲ Preset آماده
-* رابط کاربری دو زبانه: **English / فارسی**
-* Scope برای کل Vault یا CSS Class
-* CSS Class سفارشی
-* Import / Export Presets به JSON
-* مشاهده CSS تولیدشده
-
-</td>
-</tr>
-</table>
+* 12 built-in presets
+* English and Persian interface
+* Vault-wide styling
+* CSS-class-based scopes
+* Custom CSS classes
+* Import / Export presets as JSON
+* Generated CSS inspector
+* Desktop and mobile support
 
 ---
 
-## 🎁 پیش‌تنظیم‌های آماده | Built-in Presets
+## 🎁 Built-in Presets
 
-پلاگین شامل **۱۲ پیش‌تنظیم آماده** است که می‌توانید با یک کلیک آن‌ها را اعمال یا شخصی‌سازی کنید.
+Get started quickly with 12 ready-to-use presets.
 
-| Preset             | توضیح                                       |
-| ------------------ | ------------------------------------------- |
-| 🌿 **Minimal**     | تایپوگرافی آرام و کاغذی با سرتیترهای خط‌دار |
-| ☀️ **Solarized**   | پالت کلاسیک Solarized                       |
-| ❄️ **Nord**        | پالت شمالی و آرکتیک                         |
-| 🎨 **Gruvbox**     | پالت گرم و رترو                             |
-| 🌃 **Tokyo Night** | تم تاریک نئونی با آبی برقی                  |
-| 🪟 **Glass**       | سطوح شفاف با گرادیانت و سایه نرم            |
-| 💡 **Neon**        | سبک سایبرپانک با درخشش صورتی و فیروزه‌ای    |
-| 🌊 **Ocean**       | تم گرادیانت آبی عمیق                        |
-| 🌙 **Dark**        | سطوح زغالی برای حالت تاریک                  |
-| ☁️ **Light**       | سطوح روشن و تمیز برای حالت روشن             |
-| 📖 **Academic**    | سبک مقاله با بدنه Serif و سرتیترهای خط‌دار  |
-| 💻 **Developer**   | الهام‌گرفته از محیط ترمینال و GitHub        |
+| Preset             | Description                                       |
+| ------------------ | ------------------------------------------------- |
+| 🌿 **Minimal**     | Calm, paper-like typography with lined headings   |
+| ☀️ **Solarized**   | Classic Solarized color palette                   |
+| ❄️ **Nord**        | Cool Arctic-inspired palette                      |
+| 🎨 **Gruvbox**     | Warm retro-inspired colors                        |
+| 🌃 **Tokyo Night** | Dark neon style with electric blue accents        |
+| 🪟 **Glass**       | Transparent surfaces, gradients, and soft shadows |
+| 💡 **Neon**        | Cyberpunk-inspired pink and cyan glow             |
+| 🌊 **Ocean**       | Deep blue gradient style                          |
+| 🌙 **Dark**        | Charcoal surfaces for dark environments           |
+| ☁️ **Light**       | Clean and bright light style                      |
+| 📖 **Academic**    | Paper-inspired typography with serif body text    |
+| 💻 **Developer**   | Terminal and GitHub-inspired styling              |
 
 ---
 
-## 📥 نصب | Installation
+## 📥 Installation
 
-### روش ۱: Community Plugins
+> **Note:** Universal Text Style Manager is currently not available in the official Obsidian Community Plugins directory.
 
-پس از تأیید و انتشار پلاگین در Community Plugins:
+### Recommended: BRAT
 
-1. به **Settings → Community Plugins → Browse** بروید.
-2. عبارت **Universal Text Style Manager** را جستجو کنید.
-3. روی **Install** کلیک کنید.
-4. سپس پلاگین را **Enable** کنید.
+The easiest way to install the plugin is through [BRAT](https://github.com/TfTHacker/obsidian42-brat).
 
-### روش ۲: نصب دستی | Manual Installation
-
-1. به صفحه [Releases](https://github.com/saeedghobadi/universal-text-style-manager/releases/latest) بروید.
-2. فایل‌های `manifest.json` و `main.js` را دانلود کنید.
-3. در Vault خود پوشه زیر را ایجاد کنید:
-
-```text
-<YourVault>/.obsidian/plugins/universal-text-style-manager/
-```
-
-4. فایل‌های `manifest.json` و `main.js` را داخل آن قرار دهید.
-5. Obsidian را Reload کنید.
-6. از مسیر **Settings → Community Plugins** پلاگین را فعال کنید.
-
-### روش ۳: نصب با BRAT
-
-برای نصب نسخه‌های توسعه یا بتا می‌توانید از [BRAT](https://github.com/TfTHacker/obsidian42-brat) استفاده کنید.
-
-1. پلاگین **BRAT** را نصب کنید.
-2. در BRAT گزینه **Add Beta Plugin** را انتخاب کنید.
-3. آدرس زیر را وارد کنید:
+1. Install and enable **BRAT** from Obsidian Community Plugins.
+2. Open **Settings → BRAT**.
+3. Select **Add Beta Plugin**.
+4. Enter:
 
 ```text
 saeedghobadi/universal-text-style-manager
 ```
 
-4. روی **Add Plugin** کلیک کنید.
+5. Click **Add Plugin**.
+6. Go to **Settings → Community Plugins**.
+7. Enable **Universal Text Style Manager**.
+
+> 💡 BRAT can also keep the plugin updated when new releases are published.
+
+### Manual Installation
+
+You can also install the plugin manually.
+
+1. Download the latest `main.js` and `manifest.json` from the [Releases](https://github.com/saeedghobadi/universal-text-style-manager/releases) page.
+2. Create the following folder inside your Vault:
+
+```text
+<YourVault>/.obsidian/plugins/universal-text-style-manager/
+```
+
+3. Copy `main.js` and `manifest.json` into the folder.
+4. Reload Obsidian.
+5. Enable **Universal Text Style Manager** from **Settings → Community Plugins**.
 
 ---
 
-## 🎮 استفاده | Usage
+## 🎮 Usage
 
-### 🚀 باز کردن Style Manager
+### Opening Style Manager
 
-سه روش برای باز کردن رابط کاربری پلاگین وجود دارد:
+There are three ways to open the Style Manager:
 
-| روش                    | نحوه استفاده                                                            |
-| ---------------------- | ----------------------------------------------------------------------- |
-| 🎨 **Ribbon**          | روی آیکون پالت در نوار کناری کلیک کنید                                  |
-| ⌨️ **Command Palette** | `Ctrl/Cmd + P` → **Open Style Manager**                                 |
-| 🖱️ **Context Menu**   | روی متن انتخاب‌شده کلیک راست کنید و گزینه مربوط به Style را انتخاب کنید |
+| Method                 | Action                                                |
+| ---------------------- | ----------------------------------------------------- |
+| 🎨 **Ribbon**          | Click the palette icon in the sidebar                 |
+| ⌨️ **Command Palette** | `Ctrl/Cmd + P` → **Open Style Manager**               |
+| 🖱️ **Context Menu**   | Right-click selected text and choose the style option |
 
-### 🎯 گردش کار
+### Basic Workflow
 
-1. دسته‌بندی موردنظر را از سمت چپ انتخاب کنید.
-2. عنصر موردنظر را انتخاب کنید.
-3. تنظیمات ظاهری را تغییر دهید.
-4. نتیجه را در پیش‌نمایش مشاهده کنید.
-5. برای تنظیم جداگانه حالت تاریک، گزینه **Separate styles for dark mode** را فعال کنید.
+1. Choose a category from the sidebar.
+2. Select the element you want to customize.
+3. Adjust the available style options.
+4. See the changes instantly in the preview.
+5. Enable **Separate styles for dark mode** if you want independent Dark Mode settings.
 
 ---
 
-## 🎯 محدوده‌ها | Scopes
+## 🎯 Scopes
 
-با استفاده از Scope می‌توانید مشخص کنید استایل‌ها روی چه بخش‌هایی از Vault اعمال شوند.
+Scopes let you control where your styles are applied.
 
-| Scope               | اعمال روی                                       |
-| ------------------- | ----------------------------------------------- |
-| **Entire Vault**    | تمام یادداشت‌های Vault                          |
-| **CSS Class Scope** | فقط یادداشت‌هایی که CSS Class مشخص‌شده را دارند |
+| Scope               | Applies to                       |
+| ------------------- | -------------------------------- |
+| **Entire Vault**    | All notes in your Vault          |
+| **CSS Class Scope** | Notes using a specific CSS class |
 
-### مثال
+### Example
 
-در Frontmatter یادداشت:
+Add a CSS class to your note's frontmatter:
 
 ```yaml
 ---
@@ -218,113 +215,113 @@ cssclasses:
 ---
 ```
 
-سپس در **Universal Text Style Manager** یک Scope با نام زیر ایجاد کنید:
+Then create a Scope named:
 
 ```text
 my-special-note
 ```
 
-از این طریق می‌توانید استایل‌های متفاوتی برای یادداشت‌هایی با یک CSS Class مشخص ایجاد کنید.
+Styles configured for that Scope will apply only to notes using that CSS class.
 
 ---
 
-## 🌐 تغییر زبان | Language
+## 🌐 Language
 
-برای تغییر زبان رابط کاربری:
-
-**Settings → Universal Text Style Manager → Language**
-
-زبان موردنظر را انتخاب کنید:
+Universal Text Style Manager supports:
 
 * 🇬🇧 English
 * 🇮🇷 فارسی
 
+Change the interface language from:
+
+**Settings → Universal Text Style Manager → Language**
+
 ---
 
-## 📺 کانال‌های ما | Our Channels
+## 📺 Persian Obsidian Tutorials
 
 <div align="center">
 
-### 🎓 آموزش Obsidian به زبان فارسی
+### 🎓 Learn Obsidian in Persian
 
-اگر می‌خواهید Obsidian را حرفه‌ای‌تر یاد بگیرید، آموزش‌ها و مطالب ما را دنبال کنید.
+For Persian-language Obsidian tutorials, tips, workflows, and useful resources:
 
-| کانال           | لینک                                             | محتوا                          |
-| --------------- | ------------------------------------------------ | ------------------------------ |
-| 🎬 **YouTube**  | [@obsidiantut](https://youtube.com/@obsidiantut) | آموزش‌های ویدیویی کامل         |
-| 💬 **Telegram** | [@obsidiantut](https://t.me/obsidiantut)         | آموزش، پرسش و پاسخ و فایل‌ها   |
-| 🇮🇷 **Bale**   | [@obsidiantut](https://ble.ir/obsidiantut)       | نسخه فارسی برای کاربران ایرانی |
+| Channel                                                           | Content                           |
+| ----------------------------------------------------------------- | --------------------------------- |
+| 🎬 [**YouTube — @obsidiantut**](https://youtube.com/@obsidiantut) | Video tutorials                   |
+| 💬 [**Telegram — @obsidiantut**](https://t.me/obsidiantut)        | Tutorials, files & discussions    |
+| 🇮🇷 [**Bale — @obsidiantut**](https://ble.ir/obsidiantut)        | Persian content for Iranian users |
 
 </div>
 
 ---
 
-## 🛠️ توسعه | Development
+## 🛠️ Development
 
-### Clone Repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/saeedghobadi/universal-text-style-manager.git
 cd universal-text-style-manager
 ```
 
-برای توسعه پلاگین، فایل‌ها را در پوشه پلاگین Vault خود قرار دهید و سپس Obsidian را Reload کنید.
+For development, copy the plugin files into your Vault's plugin directory and reload Obsidian.
 
-### ساختار پروژه
+### Project Structure
 
 ```text
 universal-text-style-manager/
 ├── .github/
 │   └── workflows/
-│       └── release.yml       # انتشار خودکار
+│       └── release.yml
 ├── .gitignore
-├── CHANGELOG.md              # تغییرات نسخه‌ها
-├── LICENSE                   # مجوز MIT
-├── README.md                 # مستندات پروژه
-├── main.js                   # کد اصلی پلاگین
-├── manifest.json             # اطلاعات پلاگین
-└── versions.json             # سازگاری نسخه‌ها
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+├── main.js
+├── manifest.json
+└── versions.json
 ```
 
 ---
 
-## ❓ سوالات متداول | FAQ
+## ❓ FAQ
 
 <details>
-<summary><b>آیا فایل‌های Markdown من تغییر می‌کنند؟</b></summary>
+<summary><b>Does the plugin modify my Markdown files?</b></summary>
 
 <br>
 
-خیر. پلاگین فایل‌های Markdown شما را تغییر نمی‌دهد. تمام استایل‌ها به‌صورت جداگانه در تنظیمات پلاگین ذخیره می‌شوند.
+No. The plugin does not modify your Markdown files. All styling settings are stored separately in the plugin's settings.
 
 </details>
 
 <details>
-<summary><b>آیا پلاگین روی موبایل کار می‌کند؟</b></summary>
+<summary><b>Does it work on mobile?</b></summary>
 
 <br>
 
-بله. پلاگین برای استفاده در Obsidian روی دسکتاپ و موبایل طراحی شده است.
+Yes. The plugin supports both desktop and mobile versions of Obsidian.
 
 </details>
 
 <details>
-<summary><b>چگونه استایل‌ها را روی همه یادداشت‌ها اعمال کنم؟</b></summary>
+<summary><b>How can I style my entire Vault?</b></summary>
 
 <br>
 
-از Scope پیش‌فرض **Entire Vault** استفاده کنید. این Scope روی تمام یادداشت‌های Vault اعمال می‌شود.
+Use the default **Entire Vault** scope. Styles configured under this scope apply across your Vault.
 
 </details>
 
 <details>
-<summary><b>چگونه استایل‌ها را فقط روی یک گروه از یادداشت‌ها اعمال کنم؟</b></summary>
+<summary><b>Can I style only specific notes?</b></summary>
 
 <br>
 
-یک Scope از نوع **CSS Class** ایجاد کنید و سپس CSS Class موردنظر را در Frontmatter یادداشت‌ها قرار دهید.
+Yes. Create a **CSS Class Scope** and assign that CSS class to the notes you want to target.
 
-مثال:
+For example:
 
 ```yaml
 ---
@@ -336,122 +333,122 @@ cssclasses:
 </details>
 
 <details>
-<summary><b>آیا می‌توانم استایل‌ها را با دیگران به اشتراک بگذارم؟</b></summary>
+<summary><b>Can I share my styles with others?</b></summary>
 
 <br>
 
-بله. می‌توانید تنظیمات را به‌صورت Preset ذخیره کرده و آن را به شکل JSON Export کنید.
+Yes. Save your styles as a preset and export them as JSON. You can then share the preset with others.
 
 </details>
 
 <details>
-<summary><b>چگونه تنظیمات را به حالت قبل برگردانم؟</b></summary>
+<summary><b>Can I reset my styles?</b></summary>
 
 <br>
 
-از بخش **Advanced → Danger Zone** می‌توانید Scope فعلی یا تمام استایل‌ها را Reset کنید.
+Yes. Use **Advanced → Danger Zone** to reset the current scope or all styles.
 
 </details>
 
 <details>
-<summary><b>پلاگین با کدام تم‌های Obsidian سازگار است؟</b></summary>
+<summary><b>Does it work with different Obsidian themes?</b></summary>
 
 <br>
 
-پلاگین برای سازگاری با تم‌های مختلف Obsidian طراحی شده و از متغیرهای CSS داخلی Obsidian استفاده می‌کند.
+The plugin is designed to work with different Obsidian themes by using Obsidian's built-in CSS variables where possible.
 
 </details>
 
 ---
 
-## 🐛 گزارش مشکل | Bug Reports
+## 🐛 Bug Reports
 
-اگر با مشکلی مواجه شدید یا پیشنهادی برای بهبود پلاگین دارید:
+Found a bug or have a suggestion?
 
-1. ابتدا [Issues موجود](https://github.com/saeedghobadi/universal-text-style-manager/issues) را بررسی کنید.
-2. اگر مشکل جدید است، یک Issue جدید ایجاد کنید.
-3. در صورت امکان اطلاعات زیر را اضافه کنید:
+Before opening an issue, please check the [existing issues](https://github.com/saeedghobadi/universal-text-style-manager/issues).
 
-* نسخه Obsidian
-* نسخه پلاگین
-* سیستم‌عامل
-* اسکرین‌شات
-* مراحل بازتولید مشکل
+When reporting a bug, please include:
+
+* Obsidian version
+* Plugin version
+* Operating system
+* Screenshot, if applicable
+* Steps to reproduce the issue
 
 ---
 
-## 🤝 مشارکت | Contributing
+## 🤝 Contributing
 
-از مشارکت شما استقبال می‌کنیم.
+Contributions are welcome!
 
-برای مشارکت در پروژه:
-
-1. Repository را **Fork** کنید.
-2. یک Branch جدید ایجاد کنید:
+1. Fork the repository.
+2. Create a new branch:
 
 ```bash
 git checkout -b feature/AmazingFeature
 ```
 
-3. تغییرات خود را Commit کنید:
+3. Commit your changes:
 
 ```bash
 git commit -m "Add some AmazingFeature"
 ```
 
-4. Branch را Push کنید:
+4. Push the branch:
 
 ```bash
 git push origin feature/AmazingFeature
 ```
 
-5. یک **Pull Request** ایجاد کنید.
+5. Open a Pull Request.
 
 ---
 
-## 📜 مجوز | License
+## 📦 Release Notes
 
-این پروژه تحت مجوز **MIT License** منتشر شده است.
+### v1.0.0 — Initial Release
 
-برای جزئیات بیشتر، فایل [LICENSE](LICENSE) را مشاهده کنید.
+The first public release of **Universal Text Style Manager**.
 
-```text
-MIT License
-
-Copyright (c) 2025 Saeed Ghobadi
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction...
-```
-
----
-
-## 🙏 سپاسگزاری | Credits
-
-* ساخته‌شده بر پایه **Obsidian Sample Plugin**
-* با الهام از پلاگین‌های **Style Settings** و **Minimal Theme**
+* Visual styling for Markdown elements
+* Text and heading customization
+* Block, list, and table styling
+* Link and embed styling
+* Light and Dark mode support
+* Vault and CSS-class scopes
+* 12 built-in presets
+* English and Persian interface
+* JSON preset import/export
+* Generated CSS inspector
+* Desktop and mobile support
 
 ---
 
-## 📊 آمار پروژه | Stats
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Credits
+
+* Built using the [Obsidian Sample Plugin](https://github.com/obsidianmd/obsidian-sample-plugin)
+* Inspired by [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) and the [Minimal Theme](https://github.com/kepano/obsidian-minimal)
+
+---
 
 <div align="center">
 
-![GitHub Stars](https://img.shields.io/github/stars/saeedghobadi/universal-text-style-manager?style=social)
+### ⭐ Like the plugin?
 
-![GitHub Forks](https://img.shields.io/github/forks/saeedghobadi/universal-text-style-manager?style=social)
+If you find **Universal Text Style Manager** useful, consider giving the repository a star.
 
-![GitHub Watchers](https://img.shields.io/github/watchers/saeedghobadi/universal-text-style-manager?style=social)
-
-<br>
-
-⭐ اگر این پلاگین برایتان مفید بود، خوشحال می‌شویم با یک **Star** از پروژه حمایت کنید.
-
-ساخته‌شده با ❤️ برای جامعه Obsidian
+Made with ❤️ for the Obsidian community.
 
 <br>
 
-<a href="#-universal-text-style-manager">⬆ بازگشت به بالا</a>
+[⬆ Back to top](#-universal-text-style-manager)
 
 </div>
