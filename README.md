@@ -1,31 +1,15 @@
-<div align="center">
-
 # 🎨 Universal Text Style Manager
 
 **Style your Obsidian notes visually — without writing CSS.**
 
-Customize text, headings, blocks, lists, tables, links, embeds, and more
-with a simple visual interface.
+Customize text, headings, blocks, lists, tables, links, embeds, and more with a simple visual interface.
 
 **Works in Live Preview and Reading View.**
 **Your Markdown files are never modified.**
 
-<br>
+---
 
-
-
-\
-
-<br>
-
-[📥 Installation](#-installation) ·
-[✨ Features](#-features) ·
-[🎨 Presets](#-built-in-presets) ·
-[🎮 Usage](#-usage) ·
-[📺 Tutorials](#-persian-obsidian-tutorials) ·
-[🐛 Issues](#-bug-reports)
-
-</div>
+[📥 Installation](https://github.com/singhaf9270/universal-text-style-manager/blob/HEAD/#-installation) · [✨ Features](https://github.com/singhaf9270/universal-text-style-manager/blob/HEAD/#-features) · [🎨 Presets](https://github.com/singhaf9270/universal-text-style-manager/blob/HEAD/#-built-in-presets) · [🎮 Usage](https://github.com/singhaf9270/universal-text-style-manager/blob/HEAD/#-usage) · [📺 Tutorials](https://github.com/singhaf9270/universal-text-style-manager/blob/HEAD/#-persian-obsidian-tutorials) · [🐛 Issues](https://github.com/singhaf9270/universal-text-style-manager/blob/HEAD/#-bug-reports)
 
 ---
 
@@ -52,7 +36,7 @@ Customize individual Markdown text elements.
 * *Italic*
 * ***Bold & Italic***
 * ~~Strikethrough~~
-* ==Highlight==
+* Highlight
 * `Inline Code`
 * Inline Math
 * Comments
@@ -246,7 +230,7 @@ Presets are provided as JSON files and can be imported directly into Universal T
 
 👉 [**Browse Community Presets**](https://github.com/singhaf9270/universal-text-style-manager/tree/main/presets)
 
-To use a downloaded preset:
+### Importing a Preset
 
 1. Open Universal Text Style Manager.
 2. Go to the preset section.
@@ -259,8 +243,6 @@ To use a downloaded preset:
 
 ## 📺 Persian Obsidian Tutorials
 
-<div align="center">
-
 ### 🎓 Learn Obsidian in Persian
 
 For Persian-language Obsidian tutorials, tips, workflows, plugins, presets, and useful resources:
@@ -270,8 +252,6 @@ For Persian-language Obsidian tutorials, tips, workflows, plugins, presets, and 
 | 🎬 [**YouTube — @obsidiantut**](https://youtube.com/@obsidiantut) | Video tutorials                   |
 | 💬 [**Telegram — @obsidiantut**](https://t.me/obsidiantut)        | Tutorials, files & discussions    |
 | 🇮🇷 [**Bale — @obsidiantut**](https://ble.ir/obsidiantut)        | Persian content for Iranian users |
-
-</div>
 
 ---
 
@@ -307,33 +287,19 @@ universal-text-style-manager/
 
 ## ❓ FAQ
 
-<details> <summary><b>Does the plugin modify my Markdown files?</b></summary>
-
-<br>
+### Does the plugin modify my Markdown files?
 
 No. The plugin does not modify your Markdown files. All styling settings are stored separately in the plugin's settings.
 
-</details>
-
-<details> <summary><b>Does it work on mobile?</b></summary>
-
-<br>
+### Does it work on mobile?
 
 Yes. The plugin supports both desktop and mobile versions of Obsidian.
 
-</details>
-
-<details> <summary><b>How can I style my entire Vault?</b></summary>
-
-<br>
+### How can I style my entire Vault?
 
 Use the default **Entire Vault** scope. Styles configured under this scope apply across your Vault.
 
-</details>
-
-<details> <summary><b>Can I style only specific notes?</b></summary>
-
-<br>
+### Can I style only specific notes?
 
 Yes. Create a **CSS Class Scope** and assign that CSS class to the notes you want to target.
 
@@ -346,31 +312,17 @@ cssclasses:
 ---
 ```
 
-</details>
-
-<details> <summary><b>Can I share my styles with others?</b></summary>
-
-<br>
+### Can I share my styles with others?
 
 Yes. Save your styles as a preset and export them as JSON. You can then share the preset with others.
 
-</details>
-
-<details> <summary><b>Can I reset my styles?</b></summary>
-
-<br>
+### Can I reset my styles?
 
 Yes. Use **Advanced → Danger Zone** to reset the current scope or all styles.
 
-</details>
-
-<details> <summary><b>Does it work with different Obsidian themes?</b></summary>
-
-<br>
+### Does it work with different Obsidian themes?
 
 The plugin is designed to work with different Obsidian themes by using Obsidian's built-in CSS variables where possible.
-
-</details>
 
 ---
 
@@ -386,7 +338,7 @@ When reporting a bug, please include:
 * Plugin version
 * Operating system
 * Screenshot, if applicable
-* Steps to reproduce the issue
+* Steps to reproduce
 
 ---
 
@@ -407,7 +359,7 @@ git checkout -b feature/AmazingFeature
 git commit -m "Add some AmazingFeature"
 ```
 
-4. Push the branch:
+4. Push your changes:
 
 ```bash
 git push origin feature/AmazingFeature
@@ -448,7 +400,7 @@ The first public release of **Universal Text Style Manager**.
 
 This project is licensed under the **MIT License**.
 
-See the [LICENSE](LICENSE) file for details.
+See the [LICENSE](https://github.com/singhaf9270/universal-text-style-manager/blob/HEAD/LICENSE) file for details.
 
 ---
 
@@ -459,16 +411,10 @@ See the [LICENSE](LICENSE) file for details.
 
 ---
 
-<div align="center">
-
 ### ⭐ Like the plugin?
 
 If you find **Universal Text Style Manager** useful, consider giving the repository a star.
 
-Made with ❤️ for the Obsidian community.
-
-<br>
+**Made with ❤️ for the Obsidian community.**
 
 [⬆ Back to top](#-universal-text-style-manager)
-
-</div>
