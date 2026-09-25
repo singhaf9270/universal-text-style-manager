@@ -1,10 +1,12 @@
 "use strict";
 /*
- * Universal Text Style Manager — v1.0.0 (bundled, bilingual, fully inline)
+ * Universal Text Style Manager — v1.0.1 (bundled, bilingual, fully inline)
  * All UI strings + UI CSS are embedded. No external style.css needed.
  *
- * v1.0.0 changes:
- *  - Initial release
+ * v1.0.1 changes:
+ *  - Improved plugin stability and compatibility
+ *  - Updated release metadata
+ *  - Minor fixes and refinements
  *  - Live Preview code blocks render as one continuous container
  *  - Full support for text, headings, blocks, lists, tables, links, embeds
  *  - 12 built-in presets, bilingual UI (English & Farsi)
