@@ -12,10 +12,9 @@ with a simple visual interface.
 
 <br>
 
-[![Obsidian Plugin](https://img.shields.io/badge/Obsidian-Plugin-7c3aed?style=for-the-badge\&logo=obsidian\&logoColor=white)](https://obsidian.md)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge)](https://github.com/saeedghobadi/universal-text-style-manager/releases)
-[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
-[![Downloads](https://img.shields.io/github/downloads/saeedghobadi/universal-text-style-manager/total?style=for-the-badge\&color=orange)](https://github.com/saeedghobadi/universal-text-style-manager/releases)
+
+
+\
 
 <br>
 
@@ -23,6 +22,7 @@ with a simple visual interface.
 [✨ Features](#-features) ·
 [🎨 Presets](#-built-in-presets) ·
 [🎮 Usage](#-usage) ·
+[📺 Tutorials](#-persian-obsidian-tutorials) ·
 [🐛 Issues](#-bug-reports)
 
 </div>
@@ -147,7 +147,7 @@ The easiest way to install the plugin is through [BRAT](https://github.com/TfTHa
 4. Enter:
 
 ```text
-saeedghobadi/universal-text-style-manager
+singhaf9270/universal-text-style-manager
 ```
 
 5. Click **Add Plugin**.
@@ -160,7 +160,7 @@ saeedghobadi/universal-text-style-manager
 
 You can also install the plugin manually.
 
-1. Download the latest `main.js` and `manifest.json` from the [Releases](https://github.com/saeedghobadi/universal-text-style-manager/releases) page.
+1. Download the latest `main.js` and `manifest.json` from the [Releases](https://github.com/singhaf9270/universal-text-style-manager/releases) page.
 2. Create the following folder inside your Vault:
 
 ```text
@@ -238,13 +238,32 @@ Change the interface language from:
 
 ---
 
+## 🎨 Community Presets
+
+In addition to the built-in presets, you can download and share additional presets from the project's **Presets** collection.
+
+Presets are provided as JSON files and can be imported directly into Universal Text Style Manager.
+
+👉 [**Browse Community Presets**](https://github.com/singhaf9270/universal-text-style-manager/tree/main/presets)
+
+To use a downloaded preset:
+
+1. Open Universal Text Style Manager.
+2. Go to the preset section.
+3. Choose **Import Preset**.
+4. Select the downloaded `.json` file.
+
+> 💡 More presets may be added over time.
+
+---
+
 ## 📺 Persian Obsidian Tutorials
 
 <div align="center">
 
 ### 🎓 Learn Obsidian in Persian
 
-For Persian-language Obsidian tutorials, tips, workflows, and useful resources:
+For Persian-language Obsidian tutorials, tips, workflows, plugins, presets, and useful resources:
 
 | Channel                                                           | Content                           |
 | ----------------------------------------------------------------- | --------------------------------- |
@@ -261,7 +280,7 @@ For Persian-language Obsidian tutorials, tips, workflows, and useful resources:
 Clone the repository:
 
 ```bash
-git clone https://github.com/saeedghobadi/universal-text-style-manager.git
+git clone https://github.com/singhaf9270/universal-text-style-manager.git
 cd universal-text-style-manager
 ```
 
@@ -280,15 +299,15 @@ universal-text-style-manager/
 ├── README.md
 ├── main.js
 ├── manifest.json
-└── versions.json
+├── versions.json
+└── presets/
 ```
 
 ---
 
 ## ❓ FAQ
 
-<details>
-<summary><b>Does the plugin modify my Markdown files?</b></summary>
+<details> <summary><b>Does the plugin modify my Markdown files?</b></summary>
 
 <br>
 
@@ -296,8 +315,7 @@ No. The plugin does not modify your Markdown files. All styling settings are sto
 
 </details>
 
-<details>
-<summary><b>Does it work on mobile?</b></summary>
+<details> <summary><b>Does it work on mobile?</b></summary>
 
 <br>
 
@@ -305,8 +323,7 @@ Yes. The plugin supports both desktop and mobile versions of Obsidian.
 
 </details>
 
-<details>
-<summary><b>How can I style my entire Vault?</b></summary>
+<details> <summary><b>How can I style my entire Vault?</b></summary>
 
 <br>
 
@@ -314,8 +331,7 @@ Use the default **Entire Vault** scope. Styles configured under this scope apply
 
 </details>
 
-<details>
-<summary><b>Can I style only specific notes?</b></summary>
+<details> <summary><b>Can I style only specific notes?</b></summary>
 
 <br>
 
@@ -332,8 +348,7 @@ cssclasses:
 
 </details>
 
-<details>
-<summary><b>Can I share my styles with others?</b></summary>
+<details> <summary><b>Can I share my styles with others?</b></summary>
 
 <br>
 
@@ -341,8 +356,7 @@ Yes. Save your styles as a preset and export them as JSON. You can then share th
 
 </details>
 
-<details>
-<summary><b>Can I reset my styles?</b></summary>
+<details> <summary><b>Can I reset my styles?</b></summary>
 
 <br>
 
@@ -350,8 +364,7 @@ Yes. Use **Advanced → Danger Zone** to reset the current scope or all styles.
 
 </details>
 
-<details>
-<summary><b>Does it work with different Obsidian themes?</b></summary>
+<details> <summary><b>Does it work with different Obsidian themes?</b></summary>
 
 <br>
 
@@ -365,7 +378,7 @@ The plugin is designed to work with different Obsidian themes by using Obsidian'
 
 Found a bug or have a suggestion?
 
-Before opening an issue, please check the [existing issues](https://github.com/saeedghobadi/universal-text-style-manager/issues).
+Before opening an issue, please check the [existing issues](https://github.com/singhaf9270/universal-text-style-manager/issues).
 
 When reporting a bug, please include:
 
@@ -405,6 +418,13 @@ git push origin feature/AmazingFeature
 ---
 
 ## 📦 Release Notes
+
+### v1.0.1
+
+Maintenance release.
+
+* Updated version and release metadata.
+* Improved repository and documentation links.
 
 ### v1.0.0 — Initial Release
 
