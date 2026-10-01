@@ -1,7 +1,20 @@
 "use strict";
 /*
- * Universal Text Style Manager — v1.0.2 (bundled, bilingual, fully inline)
+ * Universal Text Style Manager — v1.0.3 (bundled, bilingual, fully inline)
  * All UI strings + UI CSS are embedded. No external style.css needed.
+ *
+ * v1.0.3 changes:
+ *  - Fixed color and gradient suggestion palettes
+ *  - Added built-in color swatches for text, background, and borders
+ *  - Added 16 built-in gradient presets
+ *  - Redesigned color and gradient suggestion popovers for a cleaner UI
+ *  - Improved swatch and gradient preview appearance
+ *  - Added hover and focus states for color and gradient selections
+ *  - Added responsive layouts for smaller screens
+ *  - Improved RTL/Farsi popover positioning
+ *  - Added smart popover positioning to prevent overflow outside the viewport
+ *  - Added Escape-key support for closing suggestion popovers
+ *  - Improved accessibility with labels and focus states
  *
  * v1.0.2 changes:
  *  - Added 2 new built-in presets: "Color Bloom" and "Kaleido"
@@ -12,9 +25,14 @@
  *    (borderTopWidth/RightWidth/BottomWidth/LeftWidth) for correct rendering
  *  - Added unique `id` + `builtin: true` to all presets for consistency
  *  - Live Preview code blocks render as one continuous container
- *  - Full support for text, headings, blocks, lists, tables, links, embeds
+ *
+ * Features:
+ *  - Full support for text, headings, blocks, lists, tables, links, and embeds
  *  - Bilingual UI (English & Farsi)
- *  - Scopes, custom CSS classes, import/export presets
+ *  - Scopes and custom CSS classes
+ *  - Import/export presets
+ *  - Built-in visual style presets
+ *  - Visual color and gradient selection
  */
 const obsidian = require("obsidian");
 const { Plugin, Notice, Modal, PluginSettingTab, Setting, MarkdownRenderer, Component, Menu, setIcon } = obsidian;
@@ -519,23 +537,25 @@ const UTS_PLUGIN_UI_CSS = [
 
   ".uts-swatches{display:flex;flex-wrap:wrap;gap:4px;padding:6px;background:var(--background-secondary);border-radius:6px;align-items:center;}",
   ".uts-swatch-label{width:100%;font-size:10px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;}",
-  ".uts-swatch{width:22px;height:22px;border-radius:5px;border:1px solid var(--background-modifier-border);cursor:pointer;padding:0;transition:transform 0.12s ease;flex:none;}",
-  ".uts-swatch:hover{transform:scale(1.18);border-color:var(--interactive-accent);z-index:1;}",
-  ".uts-swatch.is-transparent{background-image:linear-gradient(45deg,#888 25%,transparent 25%,transparent 75%,#888 75%),linear-gradient(45deg,#888 25%,transparent 25%,transparent 75%,#888 75%);background-size:8px 8px;background-position:0 0,4px 4px;}",
-  ".uts-swatch.is-gradient{position:relative;}",
-  ".uts-swatch.is-gradient::after{content:'@';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.9);}",
+  ".uts-swatch{width:24px;height:24px;border-radius:6px;border:2px solid var(--background-modifier-border);cursor:pointer;padding:0;transition:all 0.15s ease;flex:none;position:relative;}",
+".uts-swatch:hover{transform:scale(1.22);border-color:var(--interactive-accent);box-shadow:0 2px 8px rgba(0,0,0,0.2);z-index:2;}",
+".uts-swatch:active{transform:scale(1.05);}",
+".uts-swatch.is-transparent{background-image:linear-gradient(45deg,#999 25%,transparent 25%,transparent 75%,#999 75%),linear-gradient(45deg,#999 25%,transparent 25%,transparent 75%,#999 75%);background-size:8px 8px;background-position:0 0,4px 4px;}",
+".uts-swatch.is-gradient{position:relative;}",
+".uts-swatch.is-gradient::after{content:'';position:absolute;inset:0;border-radius:4px;}",
 
   ".uts-palette-btn{color:var(--interactive-accent);}",
   ".uts-palette-btn:hover{background:var(--interactive-accent);color:var(--text-on-accent);}",
-  ".uts-swatch-popover{background:var(--background-primary);border:1px solid var(--background-modifier-border);border-radius:10px;padding:12px;box-shadow:0 8px 32px rgba(0,0,0,0.25);min-width:260px;max-width:340px;max-height:60vh;overflow-y:auto;animation:uts-pop-in 0.12s ease-out;}",
-  "@keyframes uts-pop-in{from{opacity:0;transform:translateY(-4px) scale(0.98);}to{opacity:1;transform:translateY(0) scale(1);}}",
-  ".uts-swatch-popover-title{font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-faint);margin-bottom:8px;}",
-  ".uts-swatch-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;}",
-  ".uts-swatch-grid .uts-swatch{width:100%;height:26px;}",
-  ".uts-gradient-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}",
-  ".uts-gradient-cell{display:flex;flex-direction:column;gap:4px;align-items:center;}",
-  ".uts-gradient-cell .uts-swatch{width:100%;height:44px;border-radius:8px;}",
-  ".uts-gradient-cell-label{font-size:10px;color:var(--text-muted);text-align:center;}",
+  ".uts-swatch-popover{background:var(--background-primary);border:1px solid var(--background-modifier-border);border-radius:14px;padding:14px;box-shadow:0 12px 40px rgba(0,0,0,0.3);min-width:280px;max-width:360px;max-height:65vh;overflow-y:auto;animation:uts-pop-in 0.18s cubic-bezier(0.16,1,0.3,1);}",
+  ".uts-swatch-popover-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-faint);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--background-modifier-border);}",
+  ".uts-swatch-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;}",
+  ".uts-swatch-grid .uts-swatch{width:100%;height:28px;border-radius:6px;}",
+  ".uts-gradient-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}",
+  ".uts-gradient-cell{display:flex;flex-direction:column;gap:5px;align-items:center;}",
+  ".uts-gradient-cell .uts-swatch{width:100%;height:48px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.1);}",
+  ".uts-gradient-cell .uts-swatch:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,0.2);}",
+  ".uts-gradient-cell-label{font-size:10px;color:var(--text-muted);text-align:center;font-weight:500;letter-spacing:0.02em;}",
+  "@keyframes uts-pop-in{from{opacity:0;transform:translateY(-6px) scale(0.96);}to{opacity:1;transform:translateY(0) scale(1);}}",
 
   ".uts-slider{display:flex;gap:8px;align-items:center;}",
   ".uts-slider input[type=range]{accent-color:var(--interactive-accent);flex:1;}",
@@ -1577,7 +1597,74 @@ const BUILTIN_PRESETS = [
       "inline-math": T({ color: "#0f766e", fontWeight: "600" }, { color: "#5eead4", fontWeight: "600" }),
     } }
 ];
+/* ==================================================================
+   [swatches] — رنگ‌ها و گرادیانت‌های پیشنهادی
+   ================================================================== */
+const COLOR_SWATCHES = [
+  // خاکستری و مشکی
+  "#111111", "#374151", "#6b7280", "#9ca3af", "#d1d5db", "#f9fafb",
+  // قرمز و صورتی
+  "#ef4444", "#dc2626", "#f97316", "#fb923c", "#ec4899", "#f472b6",
+  // بنفش
+  "#8b5cf6", "#7c3aed", "#6d28d9", "#a855f7", "#c084fc", "#ddd6fe",
+  // آبی
+  "#3b82f6", "#2563eb", "#0ea5e9", "#38bdf8", "#67e8f9", "#06b6d4",
+  // سبز
+  "#22c55e", "#16a34a", "#10b981", "#34d399", "#6ee7b7", "#14b8a6",
+  // زرد و نارنجی
+  "#f59e0b", "#fbbf24", "#fde68a", "#eab308", "#d97706", "#b45309",
+  // قهوه‌ای و خاکی
+  "#92400e", "#78350f", "#a16207", "#854d0e", "#713f12", "#451a03",
+  // شفاف
+  "transparent",
+];
 
+const BACKGROUND_SWATCHES = [
+  // روشن
+  "#ffffff", "#f9fafb", "#f3f4f6", "#e5e7eb", "#fef3c7", "#fce7f3",
+  "#f3e8ff", "#ede9fe", "#e0f2fe", "#ecfeff", "#f0fdfa", "#ecfdf5",
+  "#fef9c3", "#fff7ed", "#fdf2f8", "#f5f3ff", "#eff6ff", "#f0f9ff",
+  // تیره
+  "#111827", "#1f2937", "#1e1b4b", "#172554", "#0c4a6e", "#052e16",
+  "#3b0764", "#4a044e", "#450a0a", "#431407", "#1a2e05", "#022c22",
+  // نیمه‌شفاف
+  "rgba(139,92,246,0.10)", "rgba(59,130,246,0.10)",
+  "rgba(16,185,129,0.10)", "rgba(245,158,11,0.10)",
+  "rgba(236,72,153,0.10)", "rgba(6,182,212,0.10)",
+  "transparent",
+];
+
+const BORDER_SWATCHES = [
+  "#e5e7eb", "#d1d5db", "#9ca3af", "#6b7280", "#374151", "#111827",
+  "#fca5a5", "#ef4444", "#dc2626",
+  "#fdba74", "#f97316", "#ea580c",
+  "#fde68a", "#f59e0b", "#d97706",
+  "#86efac", "#22c55e", "#16a34a",
+  "#67e8f9", "#06b6d4", "#0891b2",
+  "#c4b5fd", "#8b5cf6", "#7c3aed",
+  "#f9a8d4", "#ec4899", "#db2777",
+  "rgba(148,163,184,0.3)", "rgba(139,92,246,0.3)",
+  "rgba(56,189,248,0.3)", "rgba(244,114,182,0.3)",
+  "transparent",
+];
+
+const GRADIENT_PRESETS = [
+  { label: "Sunset",      value: "linear-gradient(135deg, #f97316, #ec4899)" },
+  { label: "Ocean",       value: "linear-gradient(135deg, #0ea5e9, #6366f1)" },
+  { label: "Forest",      value: "linear-gradient(135deg, #22c55e, #0d9488)" },
+  { label: "Lavender",    value: "linear-gradient(135deg, #8b5cf6, #d946ef)" },
+  { label: "Berry",       value: "linear-gradient(135deg, #be185d, #7c3aed)" },
+  { label: "Gold",        value: "linear-gradient(135deg, #f59e0b, #ef4444)" },
+  { label: "Aurora",      value: "linear-gradient(135deg, #06b6d4, #8b5cf6, #ec4899)" },
+  { label: "Candy",       value: "linear-gradient(135deg, #f472b6, #c084fc, #67e8f9)" },
+  { label: "Midnight",    value: "linear-gradient(135deg, #1e1b4b, #312e81)" },
+  { label: "Peach",       value: "linear-gradient(135deg, #fbbf24, #fb923c, #f472b6)" },
+  { label: "Mint",        value: "linear-gradient(135deg, #6ee7b7, #3b82f6)" },
+  { label: "Fire",        value: "linear-gradient(135deg, #ef4444, #f97316, #fbbf24)" },
+  { label: "Ice",         value: "linear-gradient(135deg, #e0f2fe, #bae6fd, #7dd3fc)" },
+  { label: "Neon",        value: "linear-gradient(135deg, #22d3ee, #a855f7, #f43f5e)" },
+  { label: "Earth",       value: "linear-gradient(135deg, #92400e, #b45309, #d97706)" },
+];
 function allPresets(settings) { return BUILTIN_PRESETS.concat(settings.customPresets || []); }
 /* ================================================================== */
 /* [preview]                                                           */
@@ -2958,4 +3045,5 @@ module.exports = class UniversalTextStyleManagerPlugin extends Plugin {
     }
   }
 };
+/* nosourcemap */
 /* nosourcemap */
