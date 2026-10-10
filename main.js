@@ -1,9 +1,9 @@
 "use strict";
 /*
- * Universal Text Style Manager — v1.0.3 (bundled, bilingual, fully inline)
+ * Universal Text Style Manager — v1.0.4 (bundled, bilingual, fully inline)
  * All UI strings + UI CSS are embedded. No external style.css needed.
  *
- * v1.0.3 changes:
+ * v1.0.4 changes:
  *  - Fixed color and gradient suggestion palettes
  *  - Added built-in color swatches for text, background, and borders
  *  - Added 16 built-in gradient presets
@@ -99,7 +99,6 @@ const I18N = {
     elTableBody: "Table body", elTableRow: "Table row", elTableCell: "Table cell",
     elTableRowHover: "Table row (hover)", elTableRowAlt: "Table row (alternating)",
     elLink: "Links (all)", elInternalLink: "Internal / wiki link", elExternalLink: "External link",
-    elTag: "Tag", elEmbed: "Embedded note / block", elImage: "Image", elPdfEmbed: "PDF embed",
     elMediaEmbed: "Audio / video", elProperties: "Properties / metadata", elSearchMatch: "Search highlight",
 
     groupText: "Text", groupBackground: "Background", groupBorder: "Border",
@@ -295,7 +294,6 @@ const I18N = {
     elTableBody: "بدنه جدول", elTableRow: "سطر جدول", elTableCell: "سلول جدول",
     elTableRowHover: "سطر جدول (هاور)", elTableRowAlt: "سطر جدول (یک درمیان)",
     elLink: "همه لینک ها", elInternalLink: "لینک داخلی", elExternalLink: "لینک خارجی",
-    elTag: "تگ", elEmbed: "یادداشت امبدشده", elImage: "تصویر", elPdfEmbed: "امبد PDF",
     elMediaEmbed: "صدا و ویدیو", elProperties: "پراپرتی ها", elSearchMatch: "هایلایت جستجو",
 
     groupText: "متن", groupBackground: "پس زمینه", groupBorder: "حاشیه",
@@ -624,12 +622,6 @@ const UTS_PLUGIN_UI_CSS = [
   ".markdown-source-view.mod-cm6 .HyperMD-codeblock::before,",
   ".markdown-source-view.mod-cm6 .HyperMD-codeblock::after{display:none !important;content:none !important;}",
 
-  ".markdown-rendered a.tag{display:inline-flex;align-items:center;}",
-  ".markdown-rendered a.tag>.cm-hashtag,",
-  ".markdown-rendered a.tag .cm-hashtag{display:inline;}",
-  ".markdown-source-view.mod-cm6 .cm-hashtag{display:inline !important;padding:0 !important;background:transparent !important;border:none !important;}",
-  ".markdown-source-view.mod-cm6 .cm-hashtag-begin,",
-  ".markdown-source-view.mod-cm6 .cm-hashtag-end{display:none !important;}",
 
   "@media (max-width:900px){",
   ".uts-sm-layout,.uts-sm-layout.no-preview{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);}",
@@ -806,7 +798,6 @@ ELEMENTS.push(
   { id: "link", labelKey: "elLink", category: "links", groups: INLINE_GROUPS.slice(), reading: ["a:not(.tag):not(.footnote-ref)"], editor: [".cm-link", ".cm-hmd-internal-link"] },
   { id: "internal-link", labelKey: "elInternalLink", category: "links", groups: INLINE_GROUPS.slice(), reading: ["a.internal-link"], editor: [".cm-hmd-internal-link"] },
   { id: "external-link", labelKey: "elExternalLink", category: "links", groups: INLINE_GROUPS.slice(), reading: ["a.external-link"], editor: [".cm-link"] },
-  { id: "tag", labelKey: "elTag", category: "links", groups: INLINE_GROUPS.slice(), reading: ["a.tag"], editor: [".cm-hashtag", "a.tag"] },
   { id: "embed", labelKey: "elEmbed", category: "embeds", groups: ALL_GROUPS.slice(), reading: [".markdown-embed"], editor: [".markdown-embed"], allowBlur: true },
   { id: "image", labelKey: "elImage", category: "embeds", groups: ALL_GROUPS.slice(), reading: ["img", ".image-embed"], editor: ["img"], allowBlur: true },
   { id: "pdf-embed", labelKey: "elPdfEmbed", category: "embeds", groups: ALL_GROUPS.slice(), reading: [".pdf-embed"], editor: [".pdf-embed"], allowBlur: true },
@@ -1092,7 +1083,6 @@ const BUILTIN_PRESETS = [
       "link": T({ color: "#7c3aed", textDecorationLine: "underline", textDecorationStyle: "solid", textDecorationColor: "#c4b5fd" }, { color: "#a78bfa", textDecorationLine: "underline", textDecorationStyle: "solid", textDecorationColor: "#7c3aed" }),
       "internal-link": T({ color: "#7c3aed", fontWeight: "600" }, { color: "#a78bfa", fontWeight: "600" }),
       "external-link": T({ color: "#0891b2", textDecorationLine: "underline" }, { color: "#22d3ee", textDecorationLine: "underline" }),
-      "tag": T({ backgroundColor: "#f4f4f5", color: "#52525b", borderRadius: "999px", fontSize: "0.85em", paddingTop: "2px", paddingBottom: "2px", paddingLeft: "10px", paddingRight: "10px" }, { backgroundColor: "#27272a", color: "#a1a1aa", borderRadius: "999px", fontSize: "0.85em", paddingTop: "2px", paddingBottom: "2px", paddingLeft: "10px", paddingRight: "10px" }),
       "image": T({ borderRadius: "8px", boxShadow: "0 4px 16px rgba(0, 0, 0, 0.1)" }, { borderRadius: "8px", boxShadow: "0 4px 16px rgba(0, 0, 0, 0.5)" }),
       "embed": T({ backgroundColor: "#f4f4f5", borderTopWidth: "1px", borderRightWidth: "1px", borderBottomWidth: "1px", borderLeftWidth: "3px", borderStyle: "solid", borderColor: "#7c3aed", borderRadius: "6px", paddingTop: "10px", paddingBottom: "10px", paddingLeft: "12px", paddingRight: "12px" }, { backgroundColor: "#27272a", borderTopWidth: "1px", borderRightWidth: "1px", borderBottomWidth: "1px", borderLeftWidth: "3px", borderStyle: "solid", borderColor: "#a78bfa", borderRadius: "6px", paddingTop: "10px", paddingBottom: "10px", paddingLeft: "12px", paddingRight: "12px" }),
       "properties": T({ backgroundColor: "#f4f4f5", borderRadius: "8px", paddingTop: "10px", paddingBottom: "10px", paddingLeft: "12px", paddingRight: "12px" }, { backgroundColor: "#27272a", borderRadius: "8px", paddingTop: "10px", paddingBottom: "10px", paddingLeft: "12px", paddingRight: "12px" }),
@@ -3045,5 +3035,6 @@ module.exports = class UniversalTextStyleManagerPlugin extends Plugin {
     }
   }
 };
+/* nosourcemap */
 /* nosourcemap */
 /* nosourcemap */
