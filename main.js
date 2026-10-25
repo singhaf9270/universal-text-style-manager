@@ -2977,54 +2977,93 @@ module.exports = class UniversalTextStyleManagerPlugin extends Plugin {
 
 
 
-// Shared settings footer: local styling, no requests until a link is opened.
+// Settings footer: three original channel logos and a separate support panel.
 function renderCreatorSupport(container, language) {
-  function element(parent, tag, options = {}) {
-    const node = parent.ownerDocument.createElement(tag);
-    if (options.cls) node.className = options.cls;
-    if (options.text !== undefined) node.textContent = options.text;
-    if (options.href) node.setAttribute('href', options.href);
-    for (const [key, value] of Object.entries(options.attr || {})) node.setAttribute(key, value);
+  const fa = language === 'fa';
+  const doc = container.ownerDocument;
+  function el(parent, tag, cls, text) {
+    const node = doc.createElement(tag);
+    if (cls) node.className = cls;
+    if (text !== undefined) node.textContent = text;
     parent.appendChild(node);
     return node;
   }
-  const fa = language === 'fa';
-  const root = element(container, 'section', { cls: 'ot-support', attr: { dir: fa ? 'rtl' : 'ltr', 'aria-label': fa ? 'ارتباط با ما و حمایت' : 'Connect and support' } });
-  element(root, 'style', { text: `
-    .ot-support{margin-block:28px 12px;padding:20px;border:1px solid var(--background-modifier-border);border-radius:18px;background:var(--background-secondary);color:var(--text-normal)}
-    .ot-support h3{margin:0 0 8px;font-size:1.1em;color:var(--text-normal)}
-    .ot-support p{margin:0 0 18px;color:var(--text-muted);line-height:1.8}
-    .ot-support .ot-support-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px}
-    .ot-support a.ot-support-card{display:flex;align-items:center;gap:12px;min-width:0;min-height:80px;padding:14px;border:1px solid var(--background-modifier-border);border-inline-start:4px solid var(--ot-brand);border-radius:12px;background:var(--background-primary);color:var(--text-normal);text-decoration:none;box-shadow:0 3px 12px rgba(0,0,0,.035)}
-    .ot-support .ot-support-icon{display:flex;align-items:center;justify-content:center;flex:0 0 40px;height:40px;border-radius:12px;background:var(--background-secondary);color:var(--ot-brand)}
-    .ot-support .ot-support-icon svg{width:23px;height:23px}
-    .ot-support .ot-support-info{display:flex;flex:1;min-width:0;flex-direction:column;gap:5px}
-    .ot-support .ot-support-label{font-weight:600;line-height:1.5}
-    .ot-support .ot-support-detail{font-size:.8em;color:var(--text-muted);overflow-wrap:anywhere}
-    .ot-support .ot-support-action{font-size:.8em;color:var(--text-muted);flex-shrink:0}
-    .ot-support a.ot-support-donate{background:linear-gradient(125deg,var(--background-primary),var(--background-secondary));border-color:var(--background-modifier-border);border-inline-start-color:var(--ot-brand)}
-    .ot-support .ot-support-donate .ot-support-action{padding:7px 10px;border-radius:8px;background:var(--interactive-accent);color:var(--text-on-accent)}
-    .ot-support a.ot-support-card:focus-visible{outline:2px solid var(--interactive-accent);outline-offset:3px}
-  ` });
-  element(root, 'h3', { text: fa ? 'ارتباط با ما' : 'Connect with us' });
-  element(root, 'p', { text: fa ? 'آموزش‌ها، تازه‌ها و پشتیبانی؛ همراه شما در دنیای ابسیدین.' : 'Tutorials, updates and support for your Obsidian journey.' });
-  const grid = element(root, 'div', { cls: 'ot-support-grid' });
-  const links = [
-    ['bale', 'message-circle', '#22a06b', fa ? 'کانال بله' : 'Bale Channel', 'https://ble.ir/obsidiantut'],
-    ['telegram', 'send', '#229ed9', fa ? 'کانال تلگرام' : 'Telegram Channel', 'https://t.me/obsidiantut'],
-    ['youtube', 'youtube', '#e5484d', fa ? 'کانال یوتیوب' : 'YouTube Channel', 'https://youtube.com/@obsidiantut'],
-    ['donate', 'heart', '#b879cd', fa ? 'حمایت از توسعهٔ افزونه‌ها' : 'Support plugin development', 'https://reymit.ir/singhaf9270']
-  ];
-  for (const [id, icon, color, label, url] of links) {
-    const donate = id === 'donate';
-    const card = element(grid, 'a', { cls: 'ot-support-card' + (donate ? ' ot-support-donate' : ''), href: url, attr: { target: '_blank', rel: 'noopener noreferrer', 'aria-label': label } });
-    card.style.setProperty('--ot-brand', color);
-    const iconEl = element(card, 'span', { cls: 'ot-support-icon', attr: { 'aria-hidden': 'true' } });
-    require('obsidian').setIcon(iconEl, icon);
-    const info = element(card, 'span', { cls: 'ot-support-info' });
-    element(info, 'span', { cls: 'ot-support-label', text: label });
-    const detail = element(info, 'span', { cls: 'ot-support-detail', text: donate ? (fa ? 'با همراهی شما، بهتر می‌سازیم.' : 'Your support keeps us building.') : '@obsidiantut' });
-    if (!donate) detail.setAttribute('dir', 'ltr');
-    element(card, 'span', { cls: 'ot-support-action', text: donate ? (fa ? 'حمایت مالی' : 'Donate') : (fa ? 'عضویت ↗' : 'Join ↗') });
+  function link(parent, cls, url, label) {
+    const node = el(parent, 'a', cls);
+    node.setAttribute('href', url);
+    node.setAttribute('target', '_blank');
+    node.setAttribute('rel', 'noopener noreferrer');
+    node.setAttribute('aria-label', label);
+    return node;
   }
+  function logo(parent, type) {
+    const svg = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', type === 'bale' ? '0 0 64 64' : '0 0 24 24');
+    svg.setAttribute('width', '28');
+    svg.setAttribute('height', '28');
+    svg.setAttribute('aria-hidden', 'true');
+    function shape(tag, attrs) {
+      const node = doc.createElementNS('http://www.w3.org/2000/svg', tag);
+      for (const [key, value] of Object.entries(attrs)) node.setAttribute(key, value);
+      svg.appendChild(node);
+    }
+    if (type === 'bale') {
+      shape('circle', { cx: '32', cy: '32', r: '30', fill: '#22A06B' });
+      shape('path', { d: 'M20 33 L28 41 L46 23', fill: 'none', stroke: '#fff', 'stroke-width': '6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
+    } else if (type === 'telegram') {
+      shape('path', { fill: '#229ED9', d: 'M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z' });
+    } else if (type === 'youtube') {
+      shape('path', { fill: '#FF0000', d: 'M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z' });
+      shape('path', { fill: '#fff', d: 'M9.6 8.4v7.2l6.2-3.6z' });
+    } else {
+      shape('path', { d: 'M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6', 'stroke-linejoin': 'round' });
+    }
+    parent.appendChild(svg);
+  }
+  const root = el(container, 'section', 'ot-support');
+  root.setAttribute('dir', fa ? 'rtl' : 'ltr');
+  root.setAttribute('aria-label', fa ? 'ارتباط با ما و حمایت' : 'Connect and support');
+  el(root, 'style', '', `
+    .ot-support{margin-block:32px 16px;color:var(--text-normal)}
+    .ot-support .ot-contact-heading{margin:0 0 6px;font-size:1.1em;font-weight:650;color:var(--text-normal)}
+    .ot-support .ot-contact-intro{margin:0 0 16px;font-size:.88em;line-height:1.8;color:var(--text-muted)}
+    .ot-support .ot-channel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .ot-support a.ot-channel{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0;padding:18px 5px 12px;border:1px solid var(--background-modifier-border);border-radius:14px;background:var(--background-primary);color:var(--text-normal);text-decoration:none;box-shadow:0 3px 12px rgba(0,0,0,.025)}
+    .ot-support .ot-channel-logo{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;background:var(--background-secondary)}
+    .ot-support .ot-channel-logo svg{display:block;width:28px;height:28px;flex:none}
+    .ot-support .ot-channel-name{font-size:.88em;font-weight:650;line-height:1.5;text-align:center}
+    .ot-support .ot-channel-handle{font-size:clamp(9px,2.4vw,11px);color:var(--text-muted);direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+    .ot-support .ot-channel-join{margin-top:3px;font-size:.78em;color:var(--text-muted);line-height:1.8}
+    .ot-support .ot-donation{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:16px;padding:18px;border:1px solid var(--background-modifier-border);border-radius:14px;background:var(--background-secondary)}
+    .ot-support .ot-donation-symbol{display:flex;align-items:center;justify-content:center;flex:0 0 42px;height:42px;border:1px solid var(--background-modifier-border);border-radius:50%;background:var(--background-primary);color:var(--text-accent)}
+    .ot-support .ot-donation-symbol svg{width:21px;height:21px}
+    .ot-support .ot-donation-copy{flex:1 1 150px;min-width:0}
+    .ot-support .ot-donation-title{margin:0 0 4px;font-size:.95em;font-weight:650;color:var(--text-normal)}
+    .ot-support .ot-donation-desc{margin:0;font-size:.82em;line-height:1.9;color:var(--text-muted)}
+    .ot-support a.ot-donation-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:38px;padding:8px 18px;border-radius:9px;background:var(--interactive-accent);color:var(--text-on-accent);font-size:.85em;font-weight:600;text-decoration:none;white-space:nowrap;margin-inline-start:auto}
+    .ot-support a:focus-visible{outline:2px solid var(--interactive-accent);outline-offset:4px}
+  `);
+  el(root, 'h3', 'ot-contact-heading', fa ? 'همراه ما باشید' : 'Stay connected');
+  el(root, 'p', 'ot-contact-intro', fa ? 'آموزش‌ها، تازه‌ها و نکته‌های کاربردی ابسیدین را در کانال‌های ما دنبال کنید.' : 'Follow our channels for Obsidian tutorials, updates and practical tips.');
+  const grid = el(root, 'div', 'ot-channel-grid');
+  const channels = [
+    ['bale', fa ? 'بله' : 'Bale', 'https://ble.ir/obsidiantut'],
+    ['telegram', fa ? 'تلگرام' : 'Telegram', 'https://t.me/obsidiantut'],
+    ['youtube', fa ? 'یوتیوب' : 'YouTube', 'https://youtube.com/@obsidiantut']
+  ];
+  for (const [type, name, url] of channels) {
+    const card = link(grid, 'ot-channel', url, (fa ? 'عضویت در کانال ' : 'Join our ') + name);
+    logo(el(card, 'span', 'ot-channel-logo'), type);
+    el(card, 'span', 'ot-channel-name', name);
+    const handle = el(card, 'span', 'ot-channel-handle', '@obsidiantut');
+    handle.setAttribute('dir', 'ltr');
+    el(card, 'span', 'ot-channel-join', fa ? 'عضویت در کانال ↗' : 'Join channel ↗');
+  }
+  const donate = el(root, 'div', 'ot-donation');
+  logo(el(donate, 'span', 'ot-donation-symbol'), 'heart');
+  const copy = el(donate, 'div', 'ot-donation-copy');
+  el(copy, 'h4', 'ot-donation-title', fa ? 'با همراهی شما، ادامه می‌دهیم' : 'Help this project grow');
+  el(copy, 'p', 'ot-donation-desc', fa ? 'اگر این افزونه برایتان مفید بوده، می‌توانید از ادامهٔ توسعهٔ آن حمایت کنید.' : 'If this plugin helps you, consider supporting its continued development.');
+  const button = link(donate, 'ot-donation-button', 'https://reymit.ir/singhaf9270', fa ? 'حمایت مالی از سازنده در ریمیت' : 'Support the creator on Reymit');
+  button.textContent = fa ? 'حمایت مالی ↗' : 'Donate ↗';
 }
