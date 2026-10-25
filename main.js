@@ -2800,6 +2800,15 @@ display() {
   const tr = (k, v) => t(lang, k, v);
   const containerEl = this.containerEl;
   containerEl.empty();
+    {
+      const support = containerEl.createEl("p");
+      support.createEl("a", {
+        text: lang === "fa" ? "♡ حمایت مالی از توسعه‌دهنده" : "♡ Support development",
+        href: "https://reymit.ir/singhaf9270",
+        attr: { target: "_blank", rel: "noopener noreferrer" }
+      });
+    }
+
   containerEl.setAttribute("dir", dictFor(lang)._dir);
 
   new Setting(containerEl).setName(tr("settingsHeading")).setHeading();
