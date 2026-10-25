@@ -1,0 +1,47 @@
+name: Release plugin
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  release:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.head_commit.message, 'Release ')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate plugin and release version
+        env:
+          RELEASE_COMMIT: ${{ github.event.head_commit.message }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          node --check main.js
+          node -e 'const m = require("./manifest.json"); if (!/^\d+\.\d+\.\d+$/.test(m.version)) throw new Error("Invalid version"); if (process.env.EVENT_NAME === "push" && process.env.RELEASE_COMMIT !== "Release " + m.version) throw new Error("Release commit/version mismatch"); const v = require("./versions.json"); if(v[m.version] !== m.minAppVersion) throw new Error("Version map mismatch")'
+      - name: Attest plugin files
+        uses: actions/attest@v4
+        with:
+          subject-path: |
+            main.js
+            manifest.json
+            styles.css
+      - name: Publish release and installation files
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_SHA: ${{ github.sha }}
+        run: |
+          VERSION=$(node -p 'require("./manifest.json").version')
+          NAME=$(node -p 'require("./manifest.json").name')
+          FILES=(main.js manifest.json)
+          if [ -f styles.css ]; then FILES+=(styles.css); fi
+          gh release create "$VERSION" "${FILES[@]}" --target "$RELEASE_SHA" --title "$NAME $VERSION" --notes-file RELEASE-NOTES.md --latest
